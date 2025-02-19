@@ -3,6 +3,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 
+#[ApiResource]
 class Card
 {
     private ?int $id = null;

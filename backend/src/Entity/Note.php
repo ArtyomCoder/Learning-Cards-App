@@ -4,6 +4,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 
+#[ApiResource]
 class Note
 {
     private ?int $id = null;

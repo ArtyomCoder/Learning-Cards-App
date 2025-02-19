@@ -3,6 +3,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 
+#[ApiResource]
 class Field
 {
     private ?int $id = null;

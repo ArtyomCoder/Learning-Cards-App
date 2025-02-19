@@ -4,13 +4,14 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 
+#[ApiResource]
 class Deck
 {
     private ?int $id = null;
 
-    private ?string $title = '';
+    public ?string $title = '';
 
-    private ?string $description = '';
+    public ?string $description = '';
 
     public iterable $notes;
 
