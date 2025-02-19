@@ -3,18 +3,27 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\Entity]
+#[ApiResource]
 class Deck
 {
+    #[ORM\Id, ORM\Column, ORM\GeneratedValue]
     private ?int $id = null;
 
-    private ?string $title = '';
+    #[ORM\Column]
+    public string $title = '';
 
-    private ?string $description = '';
+    #[ORM\Column(type: 'text', nullable: true)]
+    public ?string $description = '';
 
-    public iterable $notes;
+    #[ORM\OneToMany(targetEntity: Note::class, mappedBy: 'deck', cascade: ['persist', 'remove'])]
+    public Collection $notes;
 
-    public iterable $cards;
+    #[ORM\OneToMany(targetEntity: Card::class, mappedBy: 'deck', cascade: ['persist', 'remove'])]
+    public Collection $cards;
 
     public function __construct()
     {
