@@ -10,4 +10,7 @@ final class DeckConfig
 
     public const OUTPUT = 'DeckOutput';
     public const OUTPUT_LIST = 'DeckListOutput';
+
+    public const VALID = 'DeckValid';
+    public const VALID_CREATE = 'DeckValidCreate';
 }

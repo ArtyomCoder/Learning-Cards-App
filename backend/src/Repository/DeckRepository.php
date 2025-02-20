@@ -26,4 +26,9 @@ class DeckRepository extends ServiceEntityRepository
         $this->getEntityManager()->remove($entity);
         $this->getEntityManager()->flush();
     }
+
+    public function findDecks(): array
+    {
+        return $this->findAll();
+    }
 }

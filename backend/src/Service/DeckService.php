@@ -60,4 +60,10 @@ class DeckService
         }
         return $result;
     }
+
+    public function getDecks(): array
+    {
+        $decks = $this->deckRepository->findDecks();
+        return array_map(fn (Deck $deck) => $this->toDto($deck), $decks);
+    }
 }
