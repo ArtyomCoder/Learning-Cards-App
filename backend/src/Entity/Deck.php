@@ -20,15 +20,11 @@ class Deck
     #[ORM\Column]
     private ?string $description = null;
 
-    #[ORM\OneToMany(targetEntity: Note::class, mappedBy: 'deck', cascade: ['persist', 'remove'])]
-    private ?Collection $notes = null;
-
     #[ORM\OneToMany(targetEntity: Card::class, mappedBy: 'deck', cascade: ['persist', 'remove'])]
     private ?Collection $cards = null;
 
     public function __construct()
     {
-        $this->notes = new ArrayCollection();
         $this->cards = new ArrayCollection();
     }
 
@@ -56,25 +52,6 @@ class Deck
     public function setDescription(string $description): self
     {
         $this->description = $description;
-        return $this;
-    }
-
-    public function getNotes(): ?Collection
-    {
-        return $this->notes;
-    }
-
-    public function addNotes(Note $note): self
-    {
-        if (!$this->notes->contains($note)) {
-            $this->notes->add($note);
-        }
-        return $this;
-    }
-
-    public function removeNotes(Note $note): self
-    {
-        $this->notes->removeElement($note);
         return $this;
     }
 
