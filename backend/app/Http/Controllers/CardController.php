@@ -23,12 +23,12 @@ class CardController extends Controller
     public function store(Request $request, $deckId)
     {
         $request->validate([
-            'question' => 'required|string',
-            'answer' => 'required|string',
+            'front' => 'required|string',
+            'back' => 'required|string',
         ]);
 
         $deck = Deck::findOrFail($deckId);
-        $card = $deck->cards()->create($request->only('question', 'answer'));
+        $card = $deck->cards()->create($request->only('front', 'back'));
 
         return response()->json($card, 201);
     }
@@ -48,7 +48,7 @@ class CardController extends Controller
     public function update(Request $request, $deckId, $cardId)
     {
         $card = Card::where('deck_id', $deckId)->findOrFail($cardId);
-        $card->update($request->only('question', 'answer'));
+        $card->update($request->only('front', 'back'));
         return response()->json($card);
     }
 
